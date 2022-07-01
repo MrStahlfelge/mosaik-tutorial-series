@@ -2,11 +2,10 @@ package com.example.ergomosaik.mosaikapp
 
 import org.ergoplatform.mosaik.*
 import org.ergoplatform.mosaik.model.MosaikApp
+import org.ergoplatform.mosaik.model.ui.ForegroundColor
 import org.ergoplatform.mosaik.model.ui.layout.Padding
 import org.ergoplatform.mosaik.model.ui.text.LabelStyle
-import org.springframework.web.bind.annotation.CrossOrigin
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @CrossOrigin
@@ -20,15 +19,41 @@ class MosaikAppController {
             // define the view here
             card {
                 column(Padding.DEFAULT) {
-                    label("Hello Ergo world!", LabelStyle.HEADLINE2)
+                    label("Hello Ergo world!", LabelStyle.HEADLINE2) {
+                        id = "titleLabel"
+                    }
+
+                    box(Padding.HALF_DEFAULT)
+
+                    textInputField("inputId", "Enter your name") {
+                        minValue = 3
+                        maxValue = 10
+                    }
 
                     box(Padding.HALF_DEFAULT)
 
                     button("Click me") {
-                        onClickAction(showDialog("You clicked the button.", "myaction"))
+                        onClickAction(backendRequest("enteredName"))
                     }
                 }
             }
         }
     }
+
+    @PostMapping("/enteredName")
+    fun userEnteredName(@RequestBody values: Map<String, Any?>) =
+        backendResponse(
+            1,
+            changeView(mosaikView {
+                box {
+                    id = "titleLabel"
+
+                    label(
+                        "Hello, ${values["inputId"]}",
+                        LabelStyle.HEADLINE2,
+                        textColor = ForegroundColor.PRIMARY
+                    )
+                }
+            })
+        )
 }
