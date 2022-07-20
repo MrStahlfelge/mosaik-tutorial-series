@@ -28,6 +28,10 @@ dependencies {
 	implementation("com.github.MrStahlfelge.mosaik:common-model:$mosaikVersion")
 	implementation("com.github.MrStahlfelge.mosaik:common-model-ktx:$mosaikVersion")
 	implementation("com.github.MrStahlfelge.mosaik:serialization-jackson:$mosaikVersion")
+
+	// ErgoPay
+	implementation ("org.ergoplatform:ergo-appkit_2.12:4.0.10")
+	implementation ("com.github.MrStahlfelge:ergoplatform-jackson:4.0.10")
 }
 
 tasks.withType<KotlinCompile> {
