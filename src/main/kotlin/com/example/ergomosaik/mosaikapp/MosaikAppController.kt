@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView
 class MosaikAppController {
     @GetMapping("/")
     fun browserHintPage(): ModelAndView {
-        return ModelAndView("nobrowser.html")
+        return ModelAndView("index.html")
     }
 
     @GetMapping("/firstapp")

@@ -1,0 +1,10 @@
+{
+  "starturl": "firstapp",
+  "chooseWalletErgoPay": {
+    "getAddressForSessionUrl": "http://127.0.0.1:8080/getUserAddress/#RID#",
+    "ergoPaySetAddressUrl": "ergopay://127.0.0.1:8080/setAddress/#RID#/#P2PK_ADDRESS#"
+  },
+  "routes": {
+    "send": "http://127.0.0.1:8080/sendfunds"
+  }
+}
