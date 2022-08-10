@@ -46,7 +46,7 @@ class MosaikAppController {
         }
     }
 
-    @PostMapping("/enteredName")
+    @PostMapping("/firstapp/enteredName")
     fun userEnteredName(@RequestBody values: Map<String, Any?>) =
         backendResponse(
             1,
