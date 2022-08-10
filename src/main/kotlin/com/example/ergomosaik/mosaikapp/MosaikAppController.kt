@@ -6,11 +6,17 @@ import org.ergoplatform.mosaik.model.ui.ForegroundColor
 import org.ergoplatform.mosaik.model.ui.layout.Padding
 import org.ergoplatform.mosaik.model.ui.text.LabelStyle
 import org.springframework.web.bind.annotation.*
+import org.springframework.web.servlet.ModelAndView
 
 @RestController
 @CrossOrigin
 class MosaikAppController {
     @GetMapping("/")
+    fun browserHintPage(): ModelAndView {
+        return ModelAndView("nobrowser.html")
+    }
+
+    @GetMapping("/firstapp")
     fun getMainPage(): MosaikApp {
         return mosaikApp(
             "First Mosaik App", // app name shown in executors
